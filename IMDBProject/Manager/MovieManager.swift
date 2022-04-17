@@ -14,7 +14,7 @@ class MovieManager: NSObject {
     private var movieModel : AlamofireManager<Movie> = AlamofireManager<Movie>()
 
     func getUpcomingMovie(page: Int, apiKey: String, completionHandler: @escaping (_ status: Bool ,ImdbModel) -> Void) {
-        let serviceUrl = RestApiPath.instance.getUpcomingUrl(apiKey: apiKey) + "&page=" + String(page)
+        let serviceUrl = "\(RestApiPath.instance.getUpcomingUrl(apiKey: apiKey))&page=\(String(page))"
         var status = false
         imdbModel.getAllData(servicePath: serviceUrl) { response in
             status = true
